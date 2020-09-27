@@ -69,6 +69,10 @@ public class Application {
         return jedisCluster;
     }
 
+    /**
+     * 注册监听器
+     * @return
+     */
     @Bean
     public ServletListenerRegistrationBean servletListenerRegistrationBean() {
         ServletListenerRegistrationBean servletListenerRegistrationBean = new ServletListenerRegistrationBean();
