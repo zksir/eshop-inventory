@@ -32,11 +32,20 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
         System.out.println("===========日志===========: 已删除redis中的缓存，key=" + key);
     }
 
+    /**
+     * 根据商品id查询商品库存
+     * @param productId 商品id
+     * @return 商品库存
+     */
     @Override
     public ProductInventory findProductInventory(Integer productId) {
         return productInventoryMapper.findProductInventory(productId);
     }
 
+    /**
+     * 设置商品库存的缓存
+     * @param productInventory 商品库存
+     */
     @Override
     public void setProductInventoryCache(ProductInventory productInventory) {
         String key = "product:inventory:" + productInventory.getProductId();
@@ -44,6 +53,11 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
         System.out.println("===========日志===========: 已更新商品库存的缓存，商品id=" + productInventory.getProductId() + ", 商品库存数量=" + productInventory.getInventoryCnt() + ", key=" + key);
     }
 
+    /**
+     * 获取商品库存的缓存
+     * @param productId
+     * @return
+     */
     @Override
     public ProductInventory getProductInventoryCache(Integer productId) {
         Long inventoryCnt = 0L;
